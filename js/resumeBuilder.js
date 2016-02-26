@@ -30,7 +30,7 @@ var bio = {
   "name": "Richard Cook",
   "role": "Front End Developer",
   "welcomeMessage": "Hello, I like to eat ice cream.",
-  "skills": [""],
+  "skills": ["skill1", "skill2"],
   "contacts": {
     "mobile": "925-784-3077",
     "email": "wealthychef@gmail.com",
@@ -73,3 +73,19 @@ var education = {
   }
   ]
 };
+
+
+/*console.log('checking skills')*/
+
+if (bio.skills.length !== 0) {
+  /*console.log("skills is true")*/
+  $('#header').append(HTMLskillsStart);
+  /*console.log("loop");*/
+  for (skill in bio.skills) {
+    var _skill = bio.skills[skill];
+    /*console.log("skill is "+_skill);*/
+    $('#skills').append(HTMLskills.replace("%data%", _skill));
+  }
+
+}
+
