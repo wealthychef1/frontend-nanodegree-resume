@@ -1,8 +1,3 @@
-/*
-var formattedName = HTMLheaderName.replace("%data%", "Rich Cook");
-var formattedRole = HTMLheaderRole.replace("%data%", "Web Developer");
-$("#header").append(formattedName).append(formattedRole);
-*/
 var work = {
   "jobs": [
   {
@@ -34,13 +29,14 @@ var projects = {
 var bio = {
   "name": "Richard Cook",
   "role": "Front End Developer",
-  "welcomeMessage": "Hello, I like to eat ice cream.",
-  "skills": ["JavaScript", "HTML 5", "CSS 3", "python", "Drupal"],
+  "welcomeMessage": "Hello recruiter or hiring manager!  If you are hiring for a position where an outgoing personality, good communication skills, an imaginative approach, and a solid computer science background would be valuable, I hope you will consider me.",
+  "skills": ["JavaScript", "HTML 5", "CSS 3", "python", "Drupal", "Scientific Visualization"],
+  "picture": "images/IMG_7621.jpg",
   "contacts": {
     "mobile": "925-784-3077",
     "email": "wealthychef@gmail.com",
     "github": "wealthychef1",
-    "twitter": "wealthychef",
+    "twitter": "@wealthychef",
     "location": "Livermore, CA, USA"
   }
 };
@@ -82,8 +78,16 @@ var education = {
 };
 
 
+$("#header").prepend(HTMLheaderName.replace("%data%", bio.name)
+  + HTMLheaderRole.replace("%data%", bio.role));
+$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 /*console.log('checking skills')*/
-
+$("#header").append(HTMLbioPic.replace("%data%", bio.picture));
+$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 if (bio.skills.length !== 0) {
   /*console.log("skills is true")*/
   $('#header').append(HTMLskillsStart);
@@ -112,6 +116,17 @@ function displayWork() {
   }
 }
 displayWork();
+
+ $('#main').append(internationalizeButton);
+
+function inName() {
+  var names = bio.name.split(" ");
+  names[0] = names[0][0].toUpperCase() + names[0].slice(1).toLowerCase();
+  names[1] = names[1].toUpperCase();
+  var newname = names.join(" ");
+  console.log("inName converted " + bio.name + " to " + newname);
+  return newname;
+}
 
 /* Stuff from Lesson 2, flow control
 function locationizer(work_obj) {
