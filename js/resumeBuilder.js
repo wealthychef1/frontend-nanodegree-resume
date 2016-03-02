@@ -94,15 +94,36 @@ if (bio.skills.length !== 0) {
   }
 }
 
-if (work.jobs.length !== 0) {
-  console.log("jobs");
-  for (j in work.jobs) {
-    var job = work.jobs[j];
-    console.log("appending "+job);
-    $('#workExperience').append(HTMLworkStart);
-    $('.work-entry:last').append(HTMLworkEmployer.replace("%data%", job.employer));
-    $('.work-entry:last').append(HTMLworkTitle.replace("%data%", job.title));
+function displayWork() {
+  if (work.jobs.length !== 0) {
+    console.log("jobs");
+    for (j in work.jobs) {
+      var job = work.jobs[j];
+      console.log("appending "+job);
+      $('#workExperience').append(HTMLworkStart);
+      $('.work-entry:last').append(
+        HTMLworkEmployer.replace("%data%", job.employer) +
+        HTMLworkTitle.replace("%data%", job.title) +
+        HTMLworkDates.replace("%data%", job.dates) +
+        HTMLworkLocation.replace("%data%", job.location) +
+        HTMLworkDescription.replace("%data%", job.description));
 
+    }
   }
 }
+displayWork();
 
+/* Stuff from Lesson 2, flow control
+function locationizer(work_obj) {
+  var locations = [];
+  for (wo in work_obj) {
+    locations.push(work_obj[wo].location);
+  }
+  return locations;
+}
+
+$(document).click(function(loc) {
+  logClicks(loc.pageX, loc.pageY);
+  // your code goes here
+});
+*/
