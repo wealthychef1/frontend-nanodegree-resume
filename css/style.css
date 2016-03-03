@@ -156,6 +156,14 @@ ul {
   display: none;
 }
 
+.projectImage {
+  float: left;
+  padding: 10px;
+  width: 500px;
+  display: none;
+}
+
+
 img {
   padding: 10px;
 }
@@ -206,9 +214,16 @@ span {
   padding-bottom: 5%;
 }
 
+.markerText {
+  background-color: #f2e6e6;
+}
+
 @media only screen and (min-width: 750px) {
   #skills-h3,
   .biopic {
+    display: block;
+  }
+  .projectImage {
     display: block;
   }
 }

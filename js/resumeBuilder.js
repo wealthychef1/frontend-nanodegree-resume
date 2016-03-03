@@ -19,13 +19,32 @@ var work = {
 var projects = {
   "projects": [
   {
-    "title": "",
-    "dates": "",
-    "description": "",
-    "images": []
+    "title": "Udacity Personal Portfolio Project 1",
+    "dates": "2016 Feb",
+    "description": "Created a personal portfolio page using responsive design",
+    "images": ["images/portfolio-screenshot.jpg"]
   }
-  ]
+  ],
+  "display": function() {
+    for (proj in projects.projects) {
+      var theProject = projects.projects[proj];
+      $("#projects").append(HTMLprojectStart);
+      $(".project-entry:last").append(
+        HTMLprojectTitle.replace("%data%", theProject.title) +
+        HTMLprojectDates.replace("%data%", theProject.dates) +
+        HTMLprojectDescription.replace("%data%", theProject.description)
+        );
+      for (img in theProject["images"]) {
+        $(".project-entry:last").append(
+          HTMLprojectImage.replace("%data%", theProject.images[img])
+          );
+      }
+    }
+  }
+
 };
+projects.display();
+
 var bio = {
   "name": "Richard Cook",
   "role": "Front End Developer",
@@ -74,10 +93,26 @@ var education = {
     "date": "2016",
     "url": "https://www.udacity.com/nanodegrees/nd001"
   }
-  ]
+  ],
+  "display": function () {
+    for (school in education.schools) {
+      var theSchool = education.schools[school];
+      $("#education").append(HTMLschoolStart);
+      $(".education-entry:last").append(HTMLschoolName.replace("%data%", theSchool.name).replace("#",theSchool.url));
+      $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", theSchool.degree));
+      $(".education-entry:last").append(HTMLschoolDates.replace("%data%", theSchool.date));
+      $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", theSchool.location));
+      for (major in theSchool.majors) {
+
+        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", theSchool.majors[major]));
+      }
+    }
+  }
 };
+education.display();
 
 
+$("title").html(bio.name + "'s Resume")
 $("#header").prepend(HTMLheaderName.replace("%data%", bio.name)
   + HTMLheaderRole.replace("%data%", bio.role));
 $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
@@ -117,7 +152,7 @@ function displayWork() {
 }
 displayWork();
 
- $('#main').append(internationalizeButton);
+$('#main').append(internationalizeButton);
 
 function inName() {
   var names = bio.name.split(" ");
@@ -127,6 +162,8 @@ function inName() {
   console.log("inName converted " + bio.name + " to " + newname);
   return newname;
 }
+
+$("#mapDiv").append(googleMap);
 
 /* Stuff from Lesson 2, flow control
 function locationizer(work_obj) {
