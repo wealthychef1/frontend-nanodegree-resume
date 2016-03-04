@@ -1,3 +1,4 @@
+// WORK EXPERIENCE -------------------------------------------------------------
 var work = {
   "jobs": [
   {
@@ -14,8 +15,29 @@ var work = {
     "dates": "Aug 1996 - Aug 1998",
     "description": "Designed, analyzed and troubleshot oil refinery systems and components."
   }
-  ]
+  ],
+  "display": function () {
+    if (work.jobs.length !== 0) {
+      console.log("jobs");
+      for (j in work.jobs) {
+        var job = work.jobs[j];
+        console.log("appending "+job);
+        $('#workExperience').append(HTMLworkStart);
+        $('.work-entry:last').append(
+          HTMLworkEmployer.replace("%data%", job.employer) +
+          HTMLworkTitle.replace("%data%", job.title) +
+          HTMLworkDates.replace("%data%", job.dates) +
+          HTMLworkLocation.replace("%data%", job.location) +
+          HTMLworkDescription.replace("%data%", job.description));
+
+      }
+    }
+  }
 };
+
+work.display();
+
+// PROJECTS -------------------------------------------------------------
 var projects = {
   "projects": [
   {
@@ -45,6 +67,7 @@ var projects = {
 };
 projects.display();
 
+// BIOGRAPHICAL -------------------------------------------------------------
 var bio = {
   "name": "Richard Cook",
   "role": "Front End Developer",
@@ -57,8 +80,35 @@ var bio = {
     "github": "wealthychef1",
     "twitter": "@wealthychef",
     "location": "Livermore, CA, USA"
+  },
+  "display": function () {
+
+    $("title").html(bio.name + "'s Resume")
+    $("#header").prepend(HTMLheaderName.replace("%data%", bio.name)
+      + HTMLheaderRole.replace("%data%", bio.role));
+    $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+    $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+    $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+    $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+    $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+    /*console.log('checking skills')*/
+    $("#header").append(HTMLbioPic.replace("%data%", bio.picture));
+    $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+    if (bio.skills.length !== 0) {
+      /*console.log("skills is true")*/
+      $('#header').append(HTMLskillsStart);
+      /*console.log("loop");*/
+      for (skill in bio.skills) {
+        /*console.log("skill is "+_skill);*/
+        $('#skills').append(HTMLskills.replace("%data%", bio.skills[skill]));
+      }
+    }
   }
+
 };
+bio.display();
+
+// EDUCATION -------------------------------------------------------------
 var education = {
   "schools": [
   {
@@ -113,7 +163,7 @@ var education = {
 
     for (course in education.onlineCourses) {
       theCourse = education.onlineCourses[course];
-            $("#education").append(HTMLschoolStart);
+      $("#education").append(HTMLschoolStart);
 
       $(".education-entry:last").append(HTMLonlineTitle.replace("%data%",theCourse.title).replace("#", theCourse.url) + HTMLonlineSchool.replace("%data%",theCourse.school));
       $(".education-entry:last").append(HTMLonlineDates.replace("%data%",theCourse.date));
@@ -123,48 +173,8 @@ var education = {
 };
 education.display();
 
-
-$("title").html(bio.name + "'s Resume")
-$("#header").prepend(HTMLheaderName.replace("%data%", bio.name)
-  + HTMLheaderRole.replace("%data%", bio.role));
-$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
-$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
-$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-/*console.log('checking skills')*/
-$("#header").append(HTMLbioPic.replace("%data%", bio.picture));
-$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
-if (bio.skills.length !== 0) {
-  /*console.log("skills is true")*/
-  $('#header').append(HTMLskillsStart);
-  /*console.log("loop");*/
-  for (skill in bio.skills) {
-    /*console.log("skill is "+_skill);*/
-    $('#skills').append(HTMLskills.replace("%data%", bio.skills[skill]));
-  }
-}
-
-function displayWork() {
-  if (work.jobs.length !== 0) {
-    console.log("jobs");
-    for (j in work.jobs) {
-      var job = work.jobs[j];
-      console.log("appending "+job);
-      $('#workExperience').append(HTMLworkStart);
-      $('.work-entry:last').append(
-        HTMLworkEmployer.replace("%data%", job.employer) +
-        HTMLworkTitle.replace("%data%", job.title) +
-        HTMLworkDates.replace("%data%", job.dates) +
-        HTMLworkLocation.replace("%data%", job.location) +
-        HTMLworkDescription.replace("%data%", job.description));
-
-    }
-  }
-}
-displayWork();
-
 $('#main').append(internationalizeButton);
+
 
 function inName() {
   var names = bio.name.split(" ");
@@ -177,7 +187,7 @@ function inName() {
 
 $("#mapDiv").append(googleMap);
 
-/* Stuff from Lesson 2, flow control
+/* Stuff from Lesson 2, flow control */
 function locationizer(work_obj) {
   var locations = [];
   for (wo in work_obj) {
@@ -190,4 +200,3 @@ $(document).click(function(loc) {
   logClicks(loc.pageX, loc.pageY);
   // your code goes here
 });
-*/
