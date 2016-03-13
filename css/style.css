@@ -15,9 +15,11 @@ h6 {
 }
 
 body {
-  background-color: #F5D6AB;
+/*  background-color: #F5D6AB; */
+  background: url('../images/fry.jpg') fixed;
 
 }
+
 
 .clear-fix {
   overflow: auto;
@@ -66,7 +68,11 @@ h5 {
 
 }
 
-
+#main {
+  /*  background: transparent;
+  opacity: 0.5; */
+  opacity: 0.5;
+}
 .date-text {
   font-style: italic;
   font-size: 14px;
@@ -141,6 +147,8 @@ a {
 
 .header-footer-color {
   background-color: #57677D;
+/*  background: transparent;
+  opacity: 0.5; */
 }
 
 .flex-box {
