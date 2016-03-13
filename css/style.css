@@ -16,8 +16,7 @@ h6 {
 
 body {
 /*  background-color: #F5D6AB; */
-  background: url('../images/fry.jpg') fixed;
-
+  background: url('../images/IMG_7609.jpg') fixed;
 }
 
 
@@ -71,7 +70,6 @@ h5 {
 #main {
   /*  background: transparent;
   opacity: 0.5; */
-  opacity: 0.5;
 }
 .date-text {
   font-style: italic;
@@ -146,9 +144,9 @@ a {
 }
 
 .header-footer-color {
-  background-color: #57677D;
-/*  background: transparent;
-  opacity: 0.5; */
+  /* http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
+  background-color: rgba(87,103,125, 0.7);
+
 }
 
 .flex-box {
