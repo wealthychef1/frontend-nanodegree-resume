@@ -71,7 +71,7 @@ projects.display();
 var bio = {
   "name": "Richard Cook",
   "role": "Front End Developer",
-  "welcomeMessage": "Hello recruiter or hiring manager!  If you are hiring for a position where an outgoing personality, good communication skills, an imaginative approach, and a solid computer science background would be valuable, I hope you will consider me.",
+  "welcomeMessage": "Are you seeking someone with a solid computer science background, an outgoing personality, good communication skills, and an imaginative approach to work in your organization?",
   "skills": ["JavaScript", "HTML 5", "CSS 3", "python", "Drupal", "Scientific Visualization"],
   "picture": "images/IMG_7621.jpg",
   "contacts": {
@@ -91,6 +91,7 @@ var bio = {
     $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
     $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
     $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
+    $('#footerContacts').html($('#topContacts').html())
     /*console.log('checking skills')*/
     $("#header").append(HTMLbioPic.replace("%data%", bio.picture));
     $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
