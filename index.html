@@ -52,26 +52,31 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="#headerShifter">Bio</a></li>
+  <li role="presentation"><a href="#workExperienceShifter">Experience</a></li>
+  <li role="presentation"><a href="#projectsShifter">Projects</a></li>
+  <li role="presentation"><a href="#educationShifter">Education</a></li>
+</ul>
   <div id="main" class="container">
 
-    <div id="header" class="header-footer-color center-content clear-fix">
+    <div id="header" class="header-footer-color center-content clear-fix anchor-shift">
       <ul id="topContacts" class="flex-box"></ul>
-
     </div>
-    <div style="clear: both;"></div>
-    <div id="workExperience" class="gray">
+     <!--<div style="clear: both;"></div>-->
+    <div id="workExperience" class="gray anchor-shift">
       <h2>Work Experience</h2>
     </div>
-    <div id="projects" class="light-blue">
+    <div id="projects" class="light-blue anchor-shift">
       <h2>Projects</h2>
     </div>
-    <div id="education" class="gray">
+    <div id="education" class="gray anchor-shift">
       <h2>Education</h2>
     </div>
-    <div id="mapDiv" class="light-blue">
+    <div id="mapDiv" class="light-blue anchor-shift">
       <h2>Where I've Lived and Worked</h2>
     </div>
-    <div id="lets-connect" class="header-footer-color dark-gray">
+    <div id="lets-connect" class="header-footer-color dark-gray anchor-shift">
       <!--<h2 class="orange-text center-text">Let's Connect</h2>-->
         <ul id="footerContacts" class="flex-box">
       </ul>

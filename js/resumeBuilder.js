@@ -71,7 +71,7 @@ projects.display();
 var bio = {
   "name": "Richard Cook",
   "role": "Front End Developer",
-  "welcomeMessage": "Are you seeking someone with a solid computer science background, an outgoing personality, good communication skills, and an imaginative approach to work in your organization?",
+  "welcomeMessage": "A solid computer science background, an outgoing personality, good communication skills, and an imaginative approach to work.",
   "skills": ["JavaScript", "HTML 5", "CSS 3", "python", "Drupal", "Scientific Visualization"],
   "picture": "images/IMG_7621.jpg",
   "contacts": {
@@ -176,6 +176,9 @@ education.display();
 
 $('#main').append(internationalizeButton);
 
+$('.anchor-shift').each(function(index) {
+  $( this ).before("<div id='"+this.id+"Shifter' class='shifter'></div>");
+});
 
 function inName() {
   var names = bio.name.split(" ");
