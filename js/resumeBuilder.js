@@ -17,11 +17,7 @@ var work = {
   }
   ],
   "display": function () {
-    if (work.jobs.length !== 0) {
-      console.log("jobs");
-      for (j in work.jobs) {
-        var job = work.jobs[j];
-        console.log("appending "+job);
+      $.each(work.jobs, function (index, job) {
         $('#workExperience').append(HTMLworkStart);
         $('.work-entry:last').append(
           HTMLworkEmployer.replace("%data%", job.employer) +
@@ -30,9 +26,9 @@ var work = {
           HTMLworkLocation.replace("%data%", job.location) +
           HTMLworkDescription.replace("%data%", job.description));
 
-      }
+      });
     }
-  }
+
 };
 
 work.display();
@@ -48,20 +44,19 @@ var projects = {
   }
   ],
   "display": function() {
-    for (proj in projects.projects) {
-      var theProject = projects.projects[proj];
+    $.each(projects.projects, function(q, theProject) {
       $("#projects").append(HTMLprojectStart);
       $(".project-entry:last").append(
         HTMLprojectTitle.replace("%data%", theProject.title) +
         HTMLprojectDates.replace("%data%", theProject.dates) +
         HTMLprojectDescription.replace("%data%", theProject.description)
         );
-      for (img in theProject["images"]) {
+      $.each(theProject.images, function(jdex, img) {
         $(".project-entry:last").append(
-          HTMLprojectImage.replace("%data%", theProject.images[img])
+          HTMLprojectImage.replace("%data%", img)
           );
-      }
-    }
+      });
+    });
   }
 
 };
@@ -83,15 +78,14 @@ var bio = {
   },
   "display": function () {
 
-    $("title").html(bio.name + "'s Resume")
-    $("#header").prepend(HTMLheaderName.replace("%data%", bio.name)
-      + HTMLheaderRole.replace("%data%", bio.role));
+    $("title").html(bio.name + "'s Resume");
+    $("#header").prepend(HTMLheaderName.replace("%data%", bio.name) + HTMLheaderRole.replace("%data%", bio.role));
     $("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
     $("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
     $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
     $("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
     $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
-    $('#footerContacts').html($('#topContacts').html())
+    $('#footerContacts').html($('#topContacts').html());
     /*console.log('checking skills')*/
     $("#header").append(HTMLbioPic.replace("%data%", bio.picture));
     $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
@@ -99,10 +93,10 @@ var bio = {
       /*console.log("skills is true")*/
       $('#header').append(HTMLskillsStart);
       /*console.log("loop");*/
-      for (skill in bio.skills) {
+      $.each(bio.skills, function(index, skill) {
         /*console.log("skill is "+_skill);*/
-        $('#skills').append(HTMLskills.replace("%data%", bio.skills[skill]));
-      }
+        $('#skills').append(HTMLskills.replace("%data%", skill));
+      });
     }
   }
 
@@ -146,29 +140,27 @@ var education = {
   }
   ],
   "display": function () {
-    for (school in education.schools) {
-      var theSchool = education.schools[school];
+    $.each(education.schools, function(index, theSchool) {
       $("#education").append(HTMLschoolStart);
       $(".education-entry:last").append(HTMLschoolName.replace("%data%", theSchool.name) + HTMLschoolDegree.replace("%data%", theSchool.degree));
       $(".education-entry:last").append(HTMLschoolDates.replace("%data%", theSchool.date));
       $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", theSchool.location));
-      for (major in theSchool.majors) {
+      $.each(theSchool.majors, function (index, major) {
 
-        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", theSchool.majors[major]));
-      }
-    } // end iteration through schools
+        $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", major));
+      });
+    }); // end iteration through schools
 
     if (education.onlineCourses.length !== 0) {
       $("#education").append(HTMLonlineClasses);
     }
 
-    for (course in education.onlineCourses) {
-      theCourse = education.onlineCourses[course];
+    $.each(education.onlineCourses, function(index, theCourse) {
       $("#education").append(HTMLschoolStart);
 
       $(".education-entry:last").append(HTMLonlineTitle.replace("%data%",theCourse.title).replace("#", theCourse.url) + HTMLonlineSchool.replace("%data%",theCourse.school));
       $(".education-entry:last").append(HTMLonlineDates.replace("%data%",theCourse.date));
-    } // end iteration through online courses
+    }); // end iteration through online courses
   } // end "display" function
 
 };
@@ -194,9 +186,9 @@ $("#mapDiv").append(googleMap);
 /* Stuff from Lesson 2, flow control */
 function locationizer(work_obj) {
   var locations = [];
-  for (wo in work_obj) {
-    locations.push(work_obj[wo].location);
-  }
+  $.each(work_obj, function(index, wo) {
+    locations.push(wo.location);
+  });
   return locations;
 }
 
