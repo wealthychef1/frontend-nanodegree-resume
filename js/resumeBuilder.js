@@ -63,7 +63,7 @@ var bio = {
     "role": "Front End Developer",
     "welcomeMessage": "A solid computer science background, an outgoing personality, good communication skills, and an imaginative approach to work.",
     "skills": ["JavaScript", "HTML 5", "CSS 3", "python", "Drupal", "Scientific Visualization"],
-    "picture": "images/IMG_7621.jpg",
+    "biopic": "images/IMG_7621.jpg",
     "contacts": {
         "mobile": "925-784-3077",
         "email": "wealthychef@gmail.com",
@@ -82,7 +82,7 @@ var bio = {
         $("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
         $('#footerContacts').html($('#topContacts').html());
         /*console.log('checking skills')*/
-        $("#header").append(HTMLbioPic.replace("%data%", bio.picture));
+        $("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
         $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
         if (bio.skills.length !== 0) {
             /*console.log("skills is true")*/
@@ -105,21 +105,21 @@ var education = {
         "location": "Santa Rosa, CA, US",
         "degree": "AS",
         "majors": ["Chemistry"],
-        "date": 1982,
+        "dates": "1982",
         "url": "http://www.santarosa.edu"
     }, {
         "name": "UC Davis",
         "location": "Davis, CA, US",
         "degree": "BS",
         "majors": ["Chemical Engineering"],
-        "date": 1986,
+        "dates": "1986",
         "url": "http://www.ucdavis.edu"
     }, {
         "name": "UC Davis",
         "location": "Davis, CA, US",
         "degree": "MS",
         "majors": ["Computer Science and Engineering"],
-        "date": 1990,
+        "dates": "1990",
         "url": "http://www.ucdavis.edu"
     }],
     "onlineCourses": [{
@@ -132,7 +132,7 @@ var education = {
             $.each(education.schools, function(index, theSchool) {
                 $("#education").append(HTMLschoolStart);
                 $(".education-entry:last").append(HTMLschoolName.replace("%data%", theSchool.name) + HTMLschoolDegree.replace("%data%", theSchool.degree));
-                $(".education-entry:last").append(HTMLschoolDates.replace("%data%", theSchool.date));
+                $(".education-entry:last").append(HTMLschoolDates.replace("%data%", theSchool.dates));
                 $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", theSchool.location));
                 $.each(theSchool.majors, function(index, major) {
 
