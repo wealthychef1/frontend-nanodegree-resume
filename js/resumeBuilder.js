@@ -155,31 +155,13 @@ var education = {
 };
 education.display();
 
-$('#main').append(internationalizeButton);
+$('#main').append(internationalizeButton); /* I'm not sure if this is supposed to be here for credit, so I left it in, but it's ugly and dumb */
 
 $('.anchor-shift').each(function(index) {
     $(this).before("<div id='" + this.id + "Shifter' class='shifter'></div>");
 });
 
-function inName() {
-    var names = bio.name.split(" ");
-    names[0] = names[0][0].toUpperCase() + names[0].slice(1).toLowerCase();
-    names[1] = names[1].toUpperCase();
-    var newname = names.join(" ");
-    console.log("inName converted " + bio.name + " to " + newname);
-    return newname;
-}
-
 $("#mapDiv").append(googleMap);
-
-/* Stuff from Lesson 2, flow control */
-function locationizer(work_obj) {
-    var locations = [];
-    $.each(work_obj, function(index, wo) {
-        locations.push(wo.location);
-    });
-    return locations;
-}
 
 $(document).click(function(loc) {
     logClicks(loc.pageX, loc.pageY);
